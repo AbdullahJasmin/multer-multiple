@@ -10,7 +10,7 @@ app.use(cors());
 
 const fileStorageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./images"); 
+    cb(null, "./docs"); 
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "--" + file.originalname);
@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 });
  const upload = multer({ storage: fileStorageEngine });
  
-app.post("/fileUpload", upload.array("images", 3), (req, res) => {
+app.post("/fileUpload", upload.array("docs", 3), (req, res) => {
   console.log(req.files);
   res.send("Multiple Files Upload Success");
 });
